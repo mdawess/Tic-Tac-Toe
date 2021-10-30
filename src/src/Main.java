@@ -11,31 +11,38 @@ public class Main {
 
         Player player1 = new Player("X");
         Player player2 = new Player("O");
-        boolean win = true;
+        CheckWinner check = new CheckWinner(board);
+        boolean play = true;
 
         board.printBoard();
-        
-        while (win) {
+
+        while (play) {
             System.out.println("Where would you like to play? 1-9");
             Scanner playerTurn = new Scanner(System.in);
             int location1 = playerTurn.nextInt();
 
             makeMove(player1, location1);
+            check.isWinner(player1);
             board.printBoard();
 
             int location2 = ThreadLocalRandom.current().nextInt(1, 9);
-            makeMove(player2, location2);
+            aiMove(player2, location2);
 
             System.out.println("");
             System.out.println("----OPPONENT TURN----");
             System.out.println("");
+            check.isWinner(player2);
             board.printBoard();
 
-            if (location1 == 10) {
-                win = false;
+            if (check.isWinner(player1)) {
+                play = false;
+                System.out.println("You Win!!!!!!");
+            } else if (check.isWinner(player2)) {
+                play = false;
+                System.out.println("You Lose :(");
             }
         }
-        
+
     }
 
     public static int getCol(int location, int row) {
@@ -43,7 +50,7 @@ public class Main {
         return location - 3 * row;
     }
 
-    public static void makeMove(Player player, int location) {
+    public static boolean makeMove(Player player, int location) {
 
         ArrayList<ArrayList<Integer>> moves = new ArrayList<ArrayList<Integer>>();
 
@@ -51,21 +58,18 @@ public class Main {
             for (int col = 0; col <= 2; col++) {
                 if (Objects.equals(board.gameBoard[row][col], "-") && col == getCol(location, row)) {
                     board.gameBoard[row][col] = player.team;
+                    return true;
                 }
             }
         }
+        return false;
     }
 
-    public void win() {
-
-        for (int row = 0; row <= 2; row++) {
-            for (int col = 0; col <= 2; col++) {
-                if (Objects.equals(board.gameBoard[row][col], "-")) {
-                    System.out.println("hi");
-                }
-            }
+    public static void aiMove(Player player, int location) {
+        boolean madeMove = makeMove(player, location);
+        while (!madeMove) {
+            int location2 = ThreadLocalRandom.current().nextInt(1, 9);
+            madeMove = makeMove(player, location2);
         }
     }
 }
-
-
