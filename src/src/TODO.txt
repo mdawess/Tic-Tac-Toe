@@ -1,0 +1,7 @@
+Need:
+
+- Board - DONE
+- Players - DONE
+- Add an x to a column - DONE
+- Add win conditions
+- Add a check for valid move

@@ -1,2 +1,2 @@
 # Tic-Tac-Toe
-A command line tic tac toe game made in a few hours
+A command line tic tac toe Main made in a few hours
