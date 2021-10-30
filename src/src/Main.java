@@ -1,4 +1,3 @@
-import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
 import java.util.concurrent.ThreadLocalRandom;
@@ -51,8 +50,6 @@ public class Main {
     }
 
     public static boolean makeMove(Player player, int location) {
-
-        ArrayList<ArrayList<Integer>> moves = new ArrayList<ArrayList<Integer>>();
 
         for (int row = 0; row <= 2; row++) {
             for (int col = 0; col <= 2; col++) {
