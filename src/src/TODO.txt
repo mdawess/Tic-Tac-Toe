@@ -4,4 +4,6 @@ Need:
 - Players - DONE
 - Add an x to a column - DONE
 - Add win conditions - DONE
-- Add a check for valid move -
+- Add a check for valid move - DONE
+- Add minmax to make AI unbeatable
+- Add GUI
