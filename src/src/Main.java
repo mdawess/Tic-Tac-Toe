@@ -16,7 +16,7 @@ public class Main {
         board.printBoard();
 
         while (play) {
-            System.out.println("Where would you like to play? 1-9");
+            System.out.println("Where would you like to play? 0-8");
             Scanner playerTurn = new Scanner(System.in);
             int location1 = playerTurn.nextInt();
 
